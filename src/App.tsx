@@ -17,7 +17,7 @@ export const UserContext = React.createContext<defunktResponseType | undefined>(
 );
 
 function App() {
-  const [userState, setUserState] = useState(defunktResponse);
+  const [userState, setUserState] = useState();
 
   let { userName }: { userName: string } = useParams();
   userName = userName || "defunkt";
