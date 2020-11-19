@@ -1,15 +1,20 @@
-import { Row, Col } from "antd";
-import { Header } from "antd/lib/layout/layout";
-import React, { ReactElement } from "react";
-import defunktResponse from "../mock/defunktResponse.json";
-interface Props {}
+/** @jsxImportSource @emotion/react */
 
-export default function Head({}: Props): ReactElement {
+import { css } from "@emotion/react";
+import { Row, Col } from "antd";
+import { Layout } from "antd";
+import React, { ReactElement } from "react";
+const { Header } = Layout;
+
+export default function Head(): ReactElement {
   return (
     <Header>
-      <Row>
-        <Col span={6}>GitHub Preview</Col>
-        <Col span={6}>{defunktResponse.login}</Col>
+      <Row
+        css={css`
+          color: white;
+        `}
+      >
+        <Col span={3}>GitHub Preview</Col>
       </Row>
     </Header>
   );

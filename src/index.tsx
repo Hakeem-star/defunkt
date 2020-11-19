@@ -1,13 +1,17 @@
+import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Route path="/:loginName(.*)">
+      <Route exact path="/(profile)?">
+        <Redirect to="/profile/defunkt" />
+      </Route>
+      <Route path="/profile/:userName">
         <App />
       </Route>
     </Router>

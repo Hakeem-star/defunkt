@@ -10,18 +10,25 @@ import UserStats from "./UserStats";
 
 export default function Body({}): ReactElement {
   const data = useContext(UserContext);
+
   if (!data) {
     return <></>;
   }
   return (
     <Content>
-      <Row justify="center">
-        <Col span={12}>
-          <Row align="middle">
-            <Col span={12}>
+      <Row
+        justify="center"
+        css={css`
+          padding-top: 50px;
+        `}
+        align="middle"
+      >
+        <Col span={14}>
+          <Row gutter={[50, { sm: 50 }]} align="middle">
+            <Col lg={12} sm={24}>
               <UserCard data={data} />
             </Col>
-            <Col span={12}>
+            <Col lg={12} sm={24}>
               <UserStats data={data} />
             </Col>
           </Row>
