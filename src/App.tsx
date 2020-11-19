@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsxImportSource @emotion/react */
+
+import React, { useEffect } from "react";
+import { Button, Col, Row } from "antd";
+import "./App.css";
+import { Layout } from "antd";
+import Head from "./components/Head";
+import Body from "./components/Body";
+import { css } from "@emotion/react";
+import { defunktResponseType } from "./types/defunktResponseType";
+import { useState } from "react";
+import defunktResponse from "./mock/defunktResponse.json";
+const { Footer } = Layout;
+
+export const UserContext = React.createContext<defunktResponseType | undefined>(
+  undefined
+);
 
 function App() {
+  const [userState, setUserState] = useState(defunktResponse);
+  useEffect(() => {
+    setUserState(defunktResponse);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <UserContext.Provider value={userState}>
+        <Layout
+          css={css`
+            height: 100vh;
+          `}
         >
-          Learn React
-        </a>
-      </header>
+          <Head />
+          <Body />
+          <Footer>Footer</Footer>
+        </Layout>
+      </UserContext.Provider>
     </div>
   );
 }
